@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Own Count Watch</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="watches">
+            <div class="hour">
+                <h3 class="countHour">00</h3>
+                <p class="hourTitle">Hour</p>
+            </div>
+
+            <div class="minute">
+                <h3 class="countMinute">00</h3>
+                <p class="minuteTitle">Minute</p>
+            </div>
+
+            <div class="second">
+                <h3 class="countSecond">00</h3>
+                <p class="secondTitle">Second</p>
+            </div>
+
+            <div class="milliSecond">
+                <h3 class="countMilliSecond">00</h3>
+                <p class="milliSecondTitle">Milli</p>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="start">Start</button>
+            <button class="pause">Pasuse</button>
+            <button class="reset">Reset</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        let bodyWidth = screen.width;
+        if (bodyWidth === 250) {
+            alert("This web is not for this screen size");
+        }
+    </script>
+</body>
+</html>
