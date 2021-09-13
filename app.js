@@ -2,6 +2,7 @@ let countHour = document.querySelector(".countHour");
 let countMinute = document.querySelector(".countMinute");
 let countSecond = document.querySelector(".countSecond");
 let countMilliSecond = document.querySelector(".countMilliSecond");
+var w;
 
 let startButton = document.querySelector(".start");
 let pauseButton = document.querySelector(".pause");
@@ -16,16 +17,15 @@ let interval;
 window.onload = () => clearValue();
 
 startButton.onclick = function() {
-    clearInterval(interval);
-    interval = setInterval(runWatch, 10);
+    startWorker();
 }
 
 pauseButton.onclick = function() {
-    clearInterval(interval);
+    w.terminate();
+    w = undefined;
 }
 
 resetButton.onclick = function() {
-    clearInterval(interval);
     clearValue();
 }
 
@@ -79,4 +79,17 @@ function clearValue() {
     second = 00;
     minute = 00;
     hour = 00;
+}
+
+function startWorker() {
+    if(typeof(Worker) !== "undefined") {
+      if(typeof(w) == "undefined") {
+        w = new Worker("demo_workers.js");
+      }
+      w.onmessage = function() {
+        runWatch();
+      };
+    } else {
+      alert("Sorry, your browser does not support Web Workers...");
+    }
 }
